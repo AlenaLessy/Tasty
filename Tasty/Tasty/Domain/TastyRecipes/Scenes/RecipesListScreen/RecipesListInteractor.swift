@@ -1,9 +1,5 @@
-//
 //  RecipesListInteractor.swift
-//  Tasty
-//
-//  Created by Алена Панченко on 15.02.2023.
-//
+// Copyright © RoadMap. All rights reserved.
 
 import Foundation
 
@@ -15,6 +11,7 @@ final class RecipesListInteractor: RecipesListBusinessLogic, RecipesListDataStor
     private enum Constants {
         static let urlString = "https://api.edamam.com/api/recipes/v2?type=public&q=keto&app_id=1e2c3d39&app_key=%2057a71cae5b22ae60b3dadc7423fad742"
         static let separatorGridSymbol = "#"
+        static let secondPartURLLineNumber = 1
     }
     // MARK: - Public Properties
     
@@ -22,7 +19,7 @@ final class RecipesListInteractor: RecipesListBusinessLogic, RecipesListDataStor
     var worker: RecipesListWorkerProtocol?
     var recipeId: String?
     var recipes: [Recipe] = []
-    var imagesData: [Data] = []
+   
     
     // MARK: - Private Properties
     
@@ -53,13 +50,14 @@ final class RecipesListInteractor: RecipesListBusinessLogic, RecipesListDataStor
     func requestId(index: Int) {
         let response = RecipesListModel.IDRecipeDetailsChanged.Response(idUrlString: recipes[index].uri)
         let uri = response.idUrlString.split(separator: Constants.separatorGridSymbol)
-        let recipeId = String(uri[1])
+        let recipeId = String(uri[Constants.secondPartURLLineNumber])
         self.recipeId = recipeId
     }
     
     func requestData() async {
+        var imagesData: [Data] = []
         guard recipes.count != 0 else { return }
-        for index in 0 ..< recipes.count {
+        for index in recipes.indices {
             guard let imageUrl = URL(string: recipes[index].image),
                   let worker
             else { return }

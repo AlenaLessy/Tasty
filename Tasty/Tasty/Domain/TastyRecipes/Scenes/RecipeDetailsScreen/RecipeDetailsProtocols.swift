@@ -1,9 +1,5 @@
-//
 //  RecipeDetailsProtocols.swift
-//  Tasty
-//
-//  Created by Алена Панченко on 18.02.2023.
-//
+// Copyright © RoadMap. All rights reserved.
 
 import Foundation
 

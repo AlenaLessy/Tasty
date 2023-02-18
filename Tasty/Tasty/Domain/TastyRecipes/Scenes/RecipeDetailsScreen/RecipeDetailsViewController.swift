@@ -1,9 +1,5 @@
-//
 //  RecipeDetailsViewController.swift
-//  Tasty
-//
-//  Created by Алена Панченко on 16.02.2023.
-//
+// Copyright © RoadMap. All rights reserved.
 
 import UIKit
 
@@ -19,6 +15,7 @@ final class RecipeDetailsViewController: UIViewController {
         static let tinderAppText = "Tinder App"
         static let favoriteImageName = "favorite"
         static let separatorText = "\n"
+        static let fatalErrorOfRequiredInitText = "init(coder:) has not been implemented"
     }
     
     // MARK: - Private Visual Components
@@ -84,13 +81,13 @@ final class RecipeDetailsViewController: UIViewController {
     // MARK: Initializers
     
     init(interactor: RecipeDetailsBusinessLogic?, router: RecipeDetailsRoutingLogic) {
-        super.init(nibName: nil, bundle: nil)
         self.interactor = interactor
         self.router = router
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError(Constants.fatalErrorOfRequiredInitText)
     }
     
     // MARK: - Life Cycle

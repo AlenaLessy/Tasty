@@ -1,9 +1,5 @@
-//
 //  RecipesListViewController.swift
-//  Tasty
-//
-//  Created by Алена Панченко on 15.02.2023.
-//
+// Copyright © RoadMap. All rights reserved.
 
 import UIKit
 
@@ -17,6 +13,7 @@ final class RecipesListViewController: UIViewController {
         static let marshColorName = "MarshColor"
         static let tastyText = "TASTY"
         static let BackgroundColorName = "BackgroundColor"
+        static let fatalErrorOfRequiredInitText = "init(coder:) has not been implemented"
     }
     
     // MARK: - Private Visual Components
@@ -41,13 +38,13 @@ final class RecipesListViewController: UIViewController {
     // MARK: Initializers
     
     init(interactor: RecipesListBusinessLogic?, router: RecipesListRoutingLogic) {
-        super.init(nibName: nil, bundle: nil)
         self.interactor = interactor
         self.router = router
+        super.init(nibName: nil, bundle: nil)
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        fatalError(Constants.fatalErrorOfRequiredInitText)
     }
     
     // MARK: - Public Properties

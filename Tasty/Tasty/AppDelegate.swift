@@ -1,9 +1,5 @@
-//
 //  AppDelegate.swift
-//  Tasty
-//
-//  Created by Алена Панченко on 16.02.2023.
-//
+// Copyright © RoadMap. All rights reserved.
 
 import UIKit
 
